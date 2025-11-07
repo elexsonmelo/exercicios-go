@@ -235,14 +235,30 @@ Dica: Use %, && e ||
 */
 
 // =============================================================================
-// ESPAÇO PARA SUAS SOLUÇÕES
+// RESPOSTA DO EXERCÍCIO 1
 // =============================================================================
+
+// Função que verifica se um número é par ou ímpar
+func verificaParOuImpar(numero int) string { // a função recebe um número inteiro e retorna uma string
+	if numero%2 == 0 { // verifica se o resto da divisão do número por 2 é igual a 0, usando o operador % (módulo, ou resto da divisão) e o operador de igualdade ==
+		return fmt.Sprintf("O número %d é par", numero) // primeiro retorno da função, para imprimir a variável da string, usei Sprintf, que formata a string e retorna o valor
+	} else {
+		return fmt.Sprintf("O número %d é ímpar", numero) // segundo retorno da função, caso o número não seja par, retorna que o número é ímpar
+	}
+}
 
 func main() {
 	fmt.Println("=== EXERCÍCIOS DE LÓGICA EM GO ===")
-	fmt.Println("Escolha um exercício e implemente aqui!")
+	fmt.Println("Exercício 1: Par ou Ímpar")
 	fmt.Println()
 
-	// Implemente seus exercíci!
+	// Para testar, é preciso declarar um número e chamar a função criada:
+	numero := 4                             //criei uma variável número com valor inteiro 4, em go há várias maneiras de declaracao de variáveis, aqui usei := que é por inferencia de tipo
+	resultado := verificaParOuImpar(numero) // criei uma variável resultado, que recebe o retorno da função, chamando a função e passando a variável número como argumento
+	fmt.Println(resultado)                  // imprime o resultado
 
+	// Teste com outro número:
+	numero = 7                             // alterei o valor da variável número para 7
+	resultado = verificaParOuImpar(numero) // aqui usei a variável resultado para receber o novo retorno da função, atribuindo o novo valor à variável resultado com =
+	fmt.Println(resultado)                 // imprime o novo resultado
 }
