@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 /*
 =============================================================================
@@ -261,4 +264,14 @@ func main() {
 	numero = 7                             // alterei o valor da variável número para 7
 	resultado = verificaParOuImpar(numero) // aqui usei a variável resultado para receber o novo retorno da função, atribuindo o novo valor à variável resultado com =
 	fmt.Println(resultado)                 // imprime o novo resultado
+
+	// Exercicio 1: Usando números aleatórios (Sugestao do Rafa)
+	fmt.Println("\n--- NÚMEROS ALEATÓRIOS ---") // título para resposta do exercício usando números aleatórios
+
+	// Gera e verifica os números aleatórios
+	for numero := 0; numero < 5; numero++ { // usei o for para criar um loop que vai executar 5 vezes, ou seja, executar a instrução de código dentro do for 5 vezes
+		numeroAleatorio := rand.Intn(10)                // criei a variável numeroAleatorio, que receberá a função rand.Intn, que gera números aleatórios conforme estabelecido, neste caso, de 0 a 10
+		resultado = verificaParOuImpar(numeroAleatorio) //aqui chamo a função verificaParOuImpar, passando o número aleatório gerado como argumento, e atribuindo o retorno à variável resultado
+		fmt.Println(resultado)                          // imprime o resultado usando o Println, assim cada resultado aparece em uma linha abaixo da outra
+	}
 }
