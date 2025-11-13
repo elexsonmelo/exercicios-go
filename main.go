@@ -252,11 +252,30 @@ func verificaParOuImpar(numero int) string { // a função recebe um número int
 
 func main() {
 	fmt.Println("=== EXERCÍCIOS DE LÓGICA EM GO ===")
-	fmt.Println("Exercício 1: Par ou Ímpar")
+
+	exercicio1()
+	exercicio2()
+	exercicio3()
+	exercicio4()
+}
+
+func exercicio1() {
+	fmt.Println("\n--- EXERCÍCIO 1: Par ou Ímpar ---")
+	numero := 4
+	fmt.Println(verificaParOuImpar(numero))
+	numero = 7
+	fmt.Println(verificaParOuImpar(numero))
+
+	// Exemplo com vários números (loop)
+	fmt.Println("--- VERIFICANDO VÁRIOS NÚMEROS ---")
+	numeros := []int{2, 3, 4, 5, 6}
+	for _, n := range numeros {
+		fmt.Println(verificaParOuImpar(n))
+	}
 	fmt.Println()
 
 	// Para testar, é preciso declarar um número e chamar a função criada:
-	numero := 4                             //criei uma variável número com valor inteiro 4, em go há várias maneiras de declaracao de variáveis, aqui usei := que é por inferencia de tipo
+	numero = 4                              //alterei o valor da variável número para 4
 	resultado := verificaParOuImpar(numero) // criei uma variável resultado, que recebe o retorno da função, chamando a função e passando a variável número como argumento
 	fmt.Println(resultado)                  // imprime o resultado
 
@@ -274,4 +293,90 @@ func main() {
 		resultado = verificaParOuImpar(numeroAleatorio) //aqui chamo a função verificaParOuImpar, passando o número aleatório gerado como argumento, e atribuindo o retorno à variável resultado
 		fmt.Println(resultado)                          // imprime o resultado usando o Println, assim cada resultado aparece em uma linha abaixo da outra
 	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 2: Maior de Idade
+// =============================================================================
+func exercicio2() {
+	fmt.Println("\nExercício 2: Maior de Idade")
+	fmt.Println()
+
+	//Primeiro, vamos criar as variáveis e chamar a função verificaMaiorIdade:
+	idade := 20                            // criei a variável idade com valor 20 (cenário maior de idade)
+	resultado := verificaMaiorIdade(idade) // criei a variável resultado que recebe o retorno da função verificaMaiorIdade, passando a variável idade como argumento
+	fmt.Println(resultado)                 // imprime o resultado da verificação de idade
+
+	idade = 15                            // criei a variável idade com valor 15 (cenário menor de idade)
+	resultado = verificaMaiorIdade(idade) // chamei a função novamente, passando o novo valor da variável idade, e atribuindo o retorno à variável resultado
+	fmt.Println(resultado)                // imprime o resultado da verificação de idade
+}
+
+func verificaMaiorIdade(idade int) string { // A idéia desse exercício é criar uma função que recebe a idade como um número inteiro e retorna uma string com a verificação se é maior ou menor de idade
+	if idade >= 18 { // O if verifica se a idade é maior ou igual a 18
+		return "Você é maior de idade" // Caso sim, retorna a string "Você é maior de idade"
+	} else {
+		return "Você é menor de idade" // Se não, retorna a string "Você é menor de idade"
+	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 3: Classificação de Nota
+// =============================================================================
+func exercicio3() {
+	fmt.Println("\nExercício 3: Classificação de Nota")
+	fmt.Println()
+
+	// Vamos criar as variáveis e chamar a função verificaClassificacaoNota:
+	nota := 8.5                     // criei a variável nota com valor 8.5 (cenário de nota alta)
+	resultado := verificaNota(nota) // criei a variável resultado que recebe o retorno da função verificaClassificacaoNota, passando a variável nota como argumento
+	fmt.Println(resultado)          // imprime o resultado da verificação de nota
+
+	nota = 5.0 // criei a variável nota com valor 5.0 (cenário de nota baixa)
+	resultado = verificaNota(nota)
+	fmt.Println(resultado)
+}
+
+func verificaNota(nota float64) string { // A idéia desse exercício é criar uma função que recebe uma nota, precisa ser do tipo float, e retorna uma string com a classificação da nota
+	if nota >= 7.0 { // O primeiro if verifica se a nota é maior ou igual a 7.0
+		return "Aprovado" // Caso sim, retorna a string "Aprovado"
+	} else if nota >= 5.0 { // O segundo if verifica se a nota é maior ou igual a 5.0, como precisaremos verificar 3 cenarios, usei o else if aqui
+		return "Recuperação" // Caso sim, retorna a string "Recuperação"
+	} else { // Se a nota não for maior ou igual a 7.0, nem maior ou igual a 5.0, cai no else
+		return "Reprovado" // Retorna a string "Reprovado"
+	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 4: Desconto por Valor de Compra
+// =============================================================================
+
+func exercicio4() {
+	fmt.Println("--- EXERCÍCIO 4: DESCONTO POR VALOR DE COMPRA ---")
+
+	valores := []float64{600.0, 300.0, 150.0} // Para criar as variáveis, há algumas maneiras, uma delas é criar um slice com os valores de compra a serem testados, achei uma forma bacana de usar
+
+	for _, valor := range valores { // aqui usei o for para percorrer o slice de valores, usando o _ para ignorar o índice e pegar apenas o valor
+		desconto, valorFinal := calcularDesconto(valor)                            // chamei a função calcularDesconto, passando o valor da compra como argumento, e recebi dois retornos: desconto e valorFinal.
+		fmt.Printf("Compra: R$ %.2f | Desconto: R$ %.2f | Valor Final: R$ %.2f\n", // aqui imprimo o resultado formatado com Printf, usando %.2f para formatar os valores como float com 2 casas decimais, o \n no final é para pular uma linha após a impressão
+			valor, desconto, valorFinal) // dando continuidade à linha anterior, passo as variáveis valor, desconto e valorFinal para serem impressas na string formatada
+	}
+
+	fmt.Println() // linha em branco para separar a saída, deixa mais organizada a resposta
+}
+
+func calcularDesconto(valorCompra float64) (float64, float64) { // a função calcularDesconto recebe o valor da compra como float64 e retorna dois valores float64: o desconto e o valor final após o desconto
+	var desconto float64 // criei a variável desconto do tipo float64 para armazenar o valor do desconto calculado
+
+	if valorCompra >= 500 { // primeiro if verifica se o valor da compra é maior ou igual a 500
+		desconto = valorCompra * 0.20 // se sim, calcula o desconto de 20% e atribui à variável desconto, usei o operador * para calcular a porcentagem, ou seja, multiplica o valor da compra por 0.20
+	} else if valorCompra >= 200 { // segundo if verifica se o valor da compra é maior ou igual a 200
+		desconto = valorCompra * 0.10 // se sim, calcula o desconto de 10% e atribui à variável desconto
+	} else {
+		desconto = 0 // se o valor da compra for menor que 200, não há desconto, então atribui 0 à variável desconto, ou seja, sem desconto
+	}
+
+	valorFinal := valorCompra - desconto //aqui calculo o valor final subtraindo o desconto do valor da compra, e atribuo à variável valorFinal
+
+	return desconto, valorFinal // aqui o ponto importante: a vantagem da função ter dois retornos, posso retornar tanto o valor do desconto quanto o valor final após o desconto
 }
