@@ -256,7 +256,8 @@ func main() {
 	exercicio1()
 	exercicio2()
 	exercicio3()
-	exercicio4()
+	exercicio5()
+	exercicio6()
 }
 
 func exercicio1() {
@@ -379,4 +380,82 @@ func calcularDesconto(valorCompra float64) (float64, float64) { // a função ca
 	valorFinal := valorCompra - desconto //aqui calculo o valor final subtraindo o desconto do valor da compra, e atribuo à variável valorFinal
 
 	return desconto, valorFinal // aqui o ponto importante: a vantagem da função ter dois retornos, posso retornar tanto o valor do desconto quanto o valor final após o desconto
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 5: Acesso ao Sistema
+// =============================================================================
+
+// exercicio5 agrupa a solução do Exercício 5 (Acesso ao Sistema com Operador &&)
+func exercicio5() {
+	fmt.Println("\n--- EXERCÍCIO 5: Acesso ao Sistema ---")
+
+	// Teste 1: login correto e senha correta
+	login := "admin"                           // criei a variável login com valor "admin"
+	senha := "1234"                            // criei a variável senha com valor "1234"
+	fmt.Println(verificarAcesso(login, senha)) // chamo a função verificarAcesso passando login e senha como argumentos
+
+	// Teste 2: login correto mas senha incorreta
+	login = "admin"                            // login continua correto
+	senha = "0000"                             // mas agora a senha é incorreta
+	fmt.Println(verificarAcesso(login, senha)) // chamo a função novamente com a senha errada
+
+	// Teste 3: login incorreto e senha correta
+	login = "user"                             // agora o login é incorreto
+	senha = "1234"                             // mas a senha está correta
+	fmt.Println(verificarAcesso(login, senha)) // função retorna acesso negado pois o login está errado
+
+	// Teste 4: login incorreto e senha incorreta
+	login = "user"                             // login incorreto
+	senha = "0000"                             // senha também incorreta
+	fmt.Println(verificarAcesso(login, senha)) // ambas incorretas, acesso negado
+	fmt.Println()
+}
+
+// verificarAcesso recebe login e senha e retorna mensagem de acesso
+func verificarAcesso(login string, senha string) string { // função recebe dois argumentos: login e senha, ambos strings, e retorna uma string
+	if login == "admin" && senha == "1234" { // usa o operador && (E lógico) para verificar SE o login é "admin" E a senha é "1234"
+		return "Acesso permitido" // SE ambas as condições forem verdadeiras, retorna "Acesso permitido"
+	} else { // CASO CONTRÁRIO
+		return "Acesso negado" // retorna "Acesso negado" se qualquer uma das condições for falsa
+	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 6: Fim de Semana
+// =============================================================================
+
+// exercicio6 agrupa a solução do Exercício 6 (Fim de Semana com Operador ||)
+func exercicio6() {
+	fmt.Println("--- EXERCÍCIO 6: Fim de Semana ---")
+
+	// Teste 1: verifica se é sábado
+	dia := "sábado"                        // criei a variável dia com valor "sábado"
+	fmt.Println(verificarFimDeSemana(dia)) // chamo a função verificarFimDeSemana passando "sábado"
+
+	// Teste 2: verifica se é domingo
+	dia = "domingo"                        // agora o dia é domingo
+	fmt.Println(verificarFimDeSemana(dia)) // chamo a função com "domingo"
+
+	// Teste 3: verifica se é segunda
+	dia = "segunda"                        // agora o dia é segunda (dia útil)
+	fmt.Println(verificarFimDeSemana(dia)) // função retorna que não é fim de semana
+
+	// Teste 4: verifica se é quarta
+	dia = "quarta"                         // quarta também é dia útil
+	fmt.Println(verificarFimDeSemana(dia)) // função retorna que não é fim de semana
+
+	// Teste 5: verifica se é sexta
+	dia = "sexta"                          // sexta é dia útil (começa o fim de semana só no sábado)
+	fmt.Println(verificarFimDeSemana(dia)) // função retorna que não é fim de semana
+	fmt.Println()
+}
+
+// verificarFimDeSemana recebe um dia e verifica se é sábado ou domingo
+func verificarFimDeSemana(dia string) string { // função recebe um argumento: dia (string), e retorna uma string
+	if dia == "sábado" || dia == "domingo" { // usa o operador || (OU lógico) para verificar SE o dia é "sábado" OU "domingo"
+		return "É fim de semana!" // SE qualquer uma das condições for verdadeira, retorna "É fim de semana!"
+	} else { // CASO CONTRÁRIO
+		return "Não é fim de semana" // retorna "Não é fim de semana" se nenhuma das condições for verdadeira
+	}
 }
