@@ -258,6 +258,8 @@ func main() {
 	exercicio3()
 	exercicio5()
 	exercicio6()
+	exercicio7()
+	exercicio8()
 }
 
 func exercicio1() {
@@ -457,5 +459,90 @@ func verificarFimDeSemana(dia string) string { // função recebe um argumento: 
 		return "É fim de semana!" // SE qualquer uma das condições for verdadeira, retorna "É fim de semana!"
 	} else { // CASO CONTRÁRIO
 		return "Não é fim de semana" // retorna "Não é fim de semana" se nenhuma das condições for verdadeira
+	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 7: Entrada no Cinema
+// =============================================================================
+
+// exercicio7 agrupa a solução do Exercício 7 (Entrada no Cinema com && e ||)
+func exercicio7() {
+	fmt.Println("\n--- EXERCÍCIO 7: Entrada no Cinema ---")
+
+	// Teste 1: idade >= 18 (pode entrar sozinho)
+	idade := 20                                             // criei a variável idade com valor 20
+	acompanhado := false                                    // criei a variável acompanhado com valor false (não está acompanhado)
+	fmt.Println(verificarEntradaCinema(idade, acompanhado)) // chamo a função passando idade e se está acompanhado
+
+	// Teste 2: idade < 18 mas está acompanhado e idade >= 12
+	idade = 15                                              // criei a variável idade com valor 15 (menor de 18)
+	acompanhado = true                                      // alterou para true (está acompanhado)
+	fmt.Println(verificarEntradaCinema(idade, acompanhado)) // chamo a função com idade 15 mas acompanhado
+
+	// Teste 3: idade < 12 e está acompanhado (não pode entrar)
+	idade = 10                                              // criei a variável idade com valor 10 (menor de 12)
+	acompanhado = true                                      // alterou para true (está acompanhado)
+	fmt.Println(verificarEntradaCinema(idade, acompanhado)) // chamo a função com idade 10
+
+	// Teste 4: idade >= 18 mas sozinho
+	idade = 25                                              // criei a variável idade com valor 25 (maior de 18)
+	acompanhado = false                                     // alterou para false (não está acompanhado)
+	fmt.Println(verificarEntradaCinema(idade, acompanhado)) // chamo a função
+
+	// Teste 5: idade < 12 e sozinho (não pode entrar)
+	idade = 8                                               // criei a variável idade com valor 8
+	acompanhado = false                                     // alterou para false (não está acompanhado)
+	fmt.Println(verificarEntradaCinema(idade, acompanhado)) // chamo a função
+	fmt.Println()
+}
+
+// verificarEntradaCinema recebe idade e se está acompanhado, retorna se pode entrar no cinema
+func verificarEntradaCinema(idade int, acompanhado bool) string { // função recebe dois argumentos: idade (int) e acompanhado (bool), e retorna uma string
+	if idade >= 18 { // primeiro if: verifica se a idade é maior ou igual a 18
+		return "Pode entrar" // SE sim, pode entrar sem necessidade de acompanhante
+	} else if idade >= 12 && acompanhado { // else if: verifica SE a idade é >= 12 E (&&) está acompanhado
+		return "Pode entrar" // SE ambas as condições forem verdadeiras, pode entrar
+	} else { // CASO CONTRÁRIO
+		return "Não pode entrar" // retorna que não pode entrar
+	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 8: Negação de Condição
+// =============================================================================
+
+// exercicio8 agrupa a solução do Exercício 8 (Negação com Operador !)
+func exercicio8() {
+	fmt.Println("--- EXERCÍCIO 8: Negação de Condição ---")
+
+	// Teste 1: número positivo
+	numero := 5                            // criei a variável numero com valor 5 (número positivo)
+	fmt.Println(verificarNegativo(numero)) // chamo a função para verificar se é negativo
+
+	// Teste 2: número negativo
+	numero = -3                            // alterou para -3 (número negativo)
+	fmt.Println(verificarNegativo(numero)) // chamo a função para verificar
+
+	// Teste 3: número zero
+	numero = 0                             // alterou para 0 (zero não é negativo)
+	fmt.Println(verificarNegativo(numero)) // chamo a função
+
+	// Teste 4: número positivo grande
+	numero = 100                           // alterou para 100 (número positivo)
+	fmt.Println(verificarNegativo(numero)) // chamo a função
+
+	// Teste 5: número negativo grande
+	numero = -50                           // alterou para -50 (número negativo)
+	fmt.Println(verificarNegativo(numero)) // chamo a função
+	fmt.Println()
+}
+
+// verificarNegativo recebe um número e verifica se ele NÃO é negativo
+func verificarNegativo(numero int) string { // função recebe um argumento: numero (int), e retorna uma string
+	if !(numero < 0) { // usa o operador ! (NÃO lógico) para negar a condição (numero < 0)
+		return "O número não é negativo" // SE a negação for verdadeira (ou seja, numero >= 0), retorna que não é negativo
+	} else { // CASO CONTRÁRIO
+		return "O número é negativo" // retorna que é negativo
 	}
 }
