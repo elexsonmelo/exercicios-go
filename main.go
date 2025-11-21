@@ -260,6 +260,8 @@ func main() {
 	exercicio6()
 	exercicio7()
 	exercicio8()
+	exercicio9()
+	exercicio10()
 }
 
 func exercicio1() {
@@ -545,4 +547,47 @@ func verificarNegativo(numero int) string { // função recebe um argumento: num
 	} else { // CASO CONTRÁRIO
 		return "O número é negativo" // retorna que é negativo
 	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 9: Contar de 1 até 10
+// =============================================================================
+
+// exercicio9 agrupa a solução do Exercício 9 (Contar de 1 até 10)
+func exercicio9() {
+	fmt.Println("\n--- EXERCÍCIO 9: Contar de 1 até 10 ---")
+
+	// uso um for loop simples para contar de 1 até 10
+	// for i := 1; i <= 10; i++ significa: começar em 1, enquanto i for menor ou igual a 10, incrementar i de 1 em 1
+	for i := 1; i <= 10; i++ { // crio a variável i com valor inicial 1, a condição é i <= 10, e o incremento é i++
+		fmt.Print(i, " ") // imprimo o valor de i seguido de um espaço para separar os números
+	}
+	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 10: Números Pares de 0 a 20
+// =============================================================================
+
+// exercicio10 agrupa a solução do Exercício 10 (Números Pares de 0 a 20)
+func exercicio10() {
+	fmt.Println("--- EXERCÍCIO 10: Números Pares de 0 a 20 ---")
+
+	// Forma 1: Usando i = i + 2 (pulando de 2 em 2)
+	fmt.Println("Forma 1: Pulando de 2 em 2")
+	for i := 0; i <= 20; i = i + 2 { // comeco em 0 e vou incrementando de 2 em 2, chegando a 20
+		fmt.Print(i, " ") // imprimo cada número par
+	}
+	fmt.Println() // quebra de linha
+
+	// Forma 2: Usando if para verificar se é par
+	fmt.Println("Forma 2: Verificando se é par com if")
+	for i := 0; i <= 20; i++ { // loop normal de 0 a 20, incrementando de 1 em 1
+		if i%2 == 0 { // verifica se o resto da divisão por 2 é igual a 0 (ou seja, é par)
+			fmt.Print(i, " ") // se for par, imprime o número
+		}
+	}
+	fmt.Println() // quebra de linha
+	fmt.Println()
 }
