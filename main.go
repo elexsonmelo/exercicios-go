@@ -256,12 +256,15 @@ func main() {
 	exercicio1()
 	exercicio2()
 	exercicio3()
+	exercicio4()
 	exercicio5()
 	exercicio6()
 	exercicio7()
 	exercicio8()
 	exercicio9()
 	exercicio10()
+	exercicio11()
+	exercicio12()
 }
 
 func exercicio1() {
@@ -589,5 +592,38 @@ func exercicio10() {
 		}
 	}
 	fmt.Println() // quebra de linha
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 11: Tabuada do 5
+// =============================================================================
+
+// exercicio11 agrupa a solução do Exercício 11 (Tabuada do 5)
+func exercicio11() {
+	fmt.Println("--- EXERCÍCIO 11: Tabuada do 5 ---")
+
+	// uso um for loop para iterar de 1 até 10 (multiplicadores da tabuada)
+	// para cada valor de i, vou calcular 5 * i e imprimir no formato "5 x i = resultado"
+	for i := 1; i <= 10; i++ { // inicializo i com 1, continuo enquanto i <= 10, e incremento i de 1 em 1
+		resultado := 5 * i                        // calculo 5 vezes i e armazeno em resultado
+		fmt.Printf("5 x %d = %d\n", i, resultado) // imprimo no formato "5 x i = resultado" com quebra de linha
+	}
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 12: Contagem Regressiva
+// =============================================================================
+
+func exercicio12() {
+	fmt.Println("--- EXERCÍCIO 12: Contagem Regressiva ---")
+
+	// uso um for loop para fazer uma contagem regressiva de 10 até 1
+	// for i := 10; i >= 1; i-- significa: começar em 10, enquanto i for maior ou igual a 1, decrementar i de 1 em 1
+	for i := 10; i >= 1; i-- { // inicializo i com 10, continuo enquanto i >= 1, e decremento i com i--
+		fmt.Print(i, " ") // imprimo o valor de i seguido de um espaço para separar os números
+	}
+	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
 	fmt.Println()
 }
