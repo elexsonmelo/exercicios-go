@@ -265,6 +265,8 @@ func main() {
 	exercicio10()
 	exercicio11()
 	exercicio12()
+	exercicio13()
+	exercicio14()
 }
 
 func exercicio1() {
@@ -625,5 +627,40 @@ func exercicio12() {
 		fmt.Print(i, " ") // imprimo o valor de i seguido de um espaço para separar os números
 	}
 	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 13: Números Ímpares de 1 a 20
+// =============================================================================
+
+func exercicio13() {
+	fmt.Println("--- EXERCÍCIO 13: Números Ímpares de 1 a 20 ---")
+
+	// uso um for loop para iterar de 1 até 20 e um if para verificar se o número é ímpar
+	// um número é ímpar quando o resto da divisão por 2 é diferente de 0, ou seja, i%2 != 0
+	for i := 1; i <= 20; i++ { // inicializo i com 1, continuo enquanto i <= 20, e incremento i de 1 em 1
+		if i%2 != 0 { // verifica se o resto da divisão por 2 é diferente de 0 (ou seja, é ímpar)
+			fmt.Print(i, " ") // se for ímpar, imprimo o número seguido de um espaço
+		}
+	}
+	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 14: Soma dos Números de 1 a 100
+// =============================================================================
+
+func exercicio14() {
+	fmt.Println("--- EXERCÍCIO 14: Soma dos Números de 1 a 100 ---")
+
+	// uso um for loop para iterar de 1 até 100 e acumular a soma
+	soma := 0                   // criei a variável soma com valor inicial 0 para armazenar a soma dos números
+	for i := 1; i <= 100; i++ { // inicializo i com 1, continuo enquanto i <= 100, e incremento i de 1 em 1
+		soma = soma + i // a cada iteração, somo o valor de i à variável soma (equivalente a soma += i)
+	}
+	// depois que o loop termina, imprimo a soma total com fmt.Printf para formatar a mensagem
+	fmt.Printf("A soma dos números de 1 a 100 é: %d\n", soma) // uso %d para imprimir um inteiro, e \n para quebra de linha
 	fmt.Println()
 }
