@@ -267,6 +267,8 @@ func main() {
 	exercicio12()
 	exercicio13()
 	exercicio14()
+	exercicio15()
+	exercicio16()
 }
 
 func exercicio1() {
@@ -662,5 +664,54 @@ func exercicio14() {
 	}
 	// depois que o loop termina, imprimo a soma total com fmt.Printf para formatar a mensagem
 	fmt.Printf("A soma dos números de 1 a 100 é: %d\n", soma) // uso %d para imprimir um inteiro, e \n para quebra de linha
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 15: Contador de Números Positivos
+// =============================================================================
+
+func exercicio15() {
+	fmt.Println("--- EXERCÍCIO 15: Contador de Números Positivos ---")
+
+	// criei um array (slice) com alguns números para contar quantos são positivos
+	numeros := []int{5, -3, 0, 8, -1, 12, 7} // slice com valores negativos, zero e positivos
+	contador := 0                            // inicializo o contador com 0 para contar números positivos
+
+	// uso um for loop para iterar sobre cada número do array
+	for i := 0; i < len(numeros); i++ { // inicializo i com 0, continuo enquanto i for menor que o tamanho do array, e incremento i de 1 em 1
+		if numeros[i] > 0 { // verifica se o número na posição i é maior que 0 (positivo)
+			contador = contador + 1 // se for positivo, incremento o contador
+		}
+	}
+
+	// depois que o loop termina, imprimo o resultado
+	fmt.Printf("Array: %v\n", numeros)                     // %v imprime o valor do array
+	fmt.Printf("Existem %d números positivos\n", contador) // imprimo a quantidade de números positivos
+	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 16: FizzBuzz Simplificado
+// =============================================================================
+
+func exercicio16() {
+	fmt.Println("--- EXERCÍCIO 16: FizzBuzz Simplificado ---")
+
+	// uso um for loop para iterar de 1 até 15 e aplicar a lógica do FizzBuzz
+	for i := 1; i <= 15; i++ { // inicializo i com 1, continuo enquanto i <= 15, e incremento i de 1 em 1
+		// verifico se o número é divisível por 3 E por 5 (múltiplo de 15)
+		if i%3 == 0 && i%5 == 0 { // usa o operador && (E lógico) para verificar ambas as condições
+			fmt.Print("FizzBuzz ") // se for divisível por ambos, imprimo "FizzBuzz"
+		} else if i%3 == 0 { // caso contrário, verifica se é divisível apenas por 3
+			fmt.Print("Fizz ") // se for divisível por 3, imprimo "Fizz"
+		} else if i%5 == 0 { // caso contrário, verifica se é divisível apenas por 5
+			fmt.Print("Buzz ") // se for divisível por 5, imprimo "Buzz"
+		} else {
+			fmt.Print(i, " ") // caso não seja divisível por 3 nem por 5, imprimo o próprio número
+		}
+	}
+
+	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
 	fmt.Println()
 }
