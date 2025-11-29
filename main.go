@@ -269,6 +269,7 @@ func main() {
 	exercicio14()
 	exercicio15()
 	exercicio16()
+	exercicio17()
 }
 
 func exercicio1() {
@@ -714,4 +715,44 @@ func exercicio16() {
 
 	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
 	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 17: Validador de Senha
+// =============================================================================
+
+func exercicio17() {
+	fmt.Println("--- EXERCÍCIO 17: Validador de Senha ---")
+
+	// Teste 1: senha válida (6 caracteres e não é "123456")
+	senha := "abc123"                // criei a variável senha com valor "abc123"
+	fmt.Println(validarSenha(senha)) // chamo a função validarSenha passando a senha como argumento
+	fmt.Println()
+
+	// Teste 2: senha muito fraca (exatamente "123456")
+	senha = "123456"                 // alterou para "123456" (senha muito fraca)
+	fmt.Println(validarSenha(senha)) // chamo a função novamente
+	fmt.Println()
+
+	// Teste 3: senha muito curta (menos de 6 caracteres)
+	senha = "abc"                    // alterou para "abc" (apenas 3 caracteres)
+	fmt.Println(validarSenha(senha)) // chamo a função novamente
+	fmt.Println()
+
+	// Teste 4: senha válida com números e símbolos
+	senha = "senha@123"              // alterou para "senha@123"
+	fmt.Println(validarSenha(senha)) // chamo a função
+	fmt.Println()
+}
+
+// validarSenha recebe uma senha e verifica se ela é válida
+func validarSenha(senha string) string { // função recebe um argumento: senha (string), e retorna uma string com a mensagem de validação
+	// verifico primeiro se a senha é muito fraca (exatamente "123456")
+	if senha == "123456" { // verifica se a senha é igual a "123456"
+		return "Senha muito fraca, escolha outra" // se for, retorna mensagem de senha muito fraca
+	} else if len(senha) < 6 { // caso contrário, verifica se a senha tem menos de 6 caracteres usando len()
+		return "Senha muito curta (mínimo 6 caracteres)" // se tiver menos de 6, retorna mensagem de senha curta
+	} else { // caso contrário, a senha atende aos critérios
+		return "Senha válida" // retorna que a senha é válida
+	}
 }
