@@ -270,6 +270,7 @@ func main() {
 	exercicio15()
 	exercicio16()
 	exercicio17()
+	exercicio18()
 }
 
 func exercicio1() {
@@ -755,4 +756,73 @@ func validarSenha(senha string) string { // função recebe um argumento: senha 
 	} else { // caso contrário, a senha atende aos critérios
 		return "Senha válida" // retorna que a senha é válida
 	}
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 18: Calculadora de IMC com Classificação
+// =============================================================================
+
+// ClassificacaoIMC é uma struct que armazena os limites e descrição de cada classificação
+type ClassificacaoIMC struct {
+	limiteMinimo float64 // limite mínimo do intervalo de IMC
+	limiteMaximo float64 // limite máximo do intervalo de IMC
+	descricao    string  // descrição da classificação
+}
+
+// calcularIMC recebe peso e altura e retorna IMC e classificação usando array
+func calcularIMC(peso float64, altura float64) (float64, string) { // função recebe peso e altura (float64) e retorna imc (float64) e classificacao (string)
+	// calculo o IMC usando a fórmula: IMC = peso / (altura * altura)
+	imc := peso / (altura * altura) // divido o peso pelo quadrado da altura
+
+	// criei um array com as classificações de IMC em ordem crescente
+	// cada elemento contém o limite mínimo, limite máximo e a descrição da classificação
+	classificacoes := []ClassificacaoIMC{
+		{0, 18.5, "Abaixo do peso"}, // limite mínimo 0, máximo 18.5, descrição "Abaixo do peso"
+		{18.5, 25, "Peso normal"},   // limite mínimo 18.5, máximo 25, descrição "Peso normal"
+		{25, 30, "Sobrepeso"},       // limite mínimo 25, máximo 30, descrição "Sobrepeso"
+		{30, 500, "Obesidade"},      // limite mínimo 30, máximo 500, descrição "Obesidade"
+	}
+
+	// agora itero sobre o array de classificações para encontrar a que corresponde ao IMC
+	for _, c := range classificacoes { // percorro cada classificação c no array classificacoes (uso _ para ignorar o índice)
+		if imc >= c.limiteMinimo && imc < c.limiteMaximo { // verifica se o IMC está dentro do intervalo [limiteMinimo, limiteMaximo)
+			return imc, c.descricao // se estiver, retorno o IMC e a descrição da classificação
+		}
+	}
+
+	// se nenhuma classificação for encontrada (improvável), retorno erro
+	return imc, "Classificação desconhecida" // retorno o IMC e uma mensagem de erro
+}
+
+// exercicio18 agrupa a solução do Exercício 18 (Calculadora de IMC com Classificação)
+func exercicio18() {
+	fmt.Println("--- EXERCÍCIO 18: Calculadora de IMC com Classificação ---")
+
+	// Teste 1: peso normal
+	peso := 70.0                                    // criei a variável peso com valor 70.0 kg
+	altura := 1.75                                  // criei a variável altura com valor 1.75 m
+	imc, classificacao := calcularIMC(peso, altura) // chamo a função calcularIMC que retorna imc e classificacao
+	fmt.Printf("Peso: %.2f kg | Altura: %.2f m | IMC: %.2f | Classificação: %s\n", peso, altura, imc, classificacao)
+	fmt.Println()
+
+	// Teste 2: abaixo do peso
+	peso = 55.0                                    // alterou para 55.0 kg
+	altura = 1.80                                  // alterou para 1.80 m
+	imc, classificacao = calcularIMC(peso, altura) // chamo a função novamente com novos valores
+	fmt.Printf("Peso: %.2f kg | Altura: %.2f m | IMC: %.2f | Classificação: %s\n", peso, altura, imc, classificacao)
+	fmt.Println()
+
+	// Teste 3: sobrepeso
+	peso = 85.0                                    // alterou para 85.0 kg
+	altura = 1.75                                  // alterou para 1.75 m
+	imc, classificacao = calcularIMC(peso, altura) // chamo a função novamente
+	fmt.Printf("Peso: %.2f kg | Altura: %.2f m | IMC: %.2f | Classificação: %s\n", peso, altura, imc, classificacao)
+	fmt.Println()
+
+	// Teste 4: obesidade
+	peso = 100.0                                   // alterou para 100.0 kg
+	altura = 1.70                                  // alterou para 1.70 m
+	imc, classificacao = calcularIMC(peso, altura) // chamo a função novamente
+	fmt.Printf("Peso: %.2f kg | Altura: %.2f m | IMC: %.2f | Classificação: %s\n", peso, altura, imc, classificacao)
+	fmt.Println()
 }
