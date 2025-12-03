@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 )
 
 /*
@@ -271,6 +272,7 @@ func main() {
 	exercicio16()
 	exercicio17()
 	exercicio18()
+	exercicio19()
 }
 
 func exercicio1() {
@@ -825,4 +827,51 @@ func exercicio18() {
 	imc, classificacao = calcularIMC(peso, altura) // chamo a função novamente
 	fmt.Printf("Peso: %.2f kg | Altura: %.2f m | IMC: %.2f | Classificação: %s\n", peso, altura, imc, classificacao)
 	fmt.Println()
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 19: Jogo de Adivinhação com Tentativas Limitadas
+// =============================================================================
+
+// jogoAdivinhacao simula um jogo: recebe o número alvo, tentativas do jogador e o máximo de tentativas
+// Retorna uma string com o histórico das tentativas e o resultado final
+func jogoAdivinhacao(target int, guesses []int, maxAttempts int) string {
+	var b strings.Builder
+	for i, g := range guesses {
+		attempt := i + 1
+		if attempt > maxAttempts {
+			break
+		}
+		if g == target {
+			b.WriteString(fmt.Sprintf("Tentativa %d: %d — Acertou! Parabéns!\n", attempt, g))
+			return b.String()
+		}
+		if g < target {
+			b.WriteString(fmt.Sprintf("Tentativa %d: %d — Errado. Tente um número MAIOR.\n", attempt, g))
+		} else {
+			b.WriteString(fmt.Sprintf("Tentativa %d: %d — Errado. Tente um número MENOR.\n", attempt, g))
+		}
+	}
+	b.WriteString(fmt.Sprintf("Não acertou nas %d tentativas. O número era %d\n", maxAttempts, target))
+	return b.String()
+}
+
+// exercicio19 agrupa a solução do Exercício 19 e demonstra alguns cenários
+func exercicio19() {
+	fmt.Println("--- EXERCÍCIO 19: Jogo de Adivinhação ---")
+
+	// Teste 1: acerta na primeira tentativa
+	target := 7
+	guesses := []int{7, 2, 5}
+	fmt.Println(jogoAdivinhacao(target, guesses, 3))
+
+	// Teste 2: acerta na última tentativa
+	target = 4
+	guesses = []int{1, 3, 4}
+	fmt.Println(jogoAdivinhacao(target, guesses, 3))
+
+	// Teste 3: não acerta nas tentativas
+	target = 9
+	guesses = []int{1, 2, 3}
+	fmt.Println(jogoAdivinhacao(target, guesses, 3))
 }
