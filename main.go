@@ -273,6 +273,7 @@ func main() {
 	exercicio17()
 	exercicio18()
 	exercicio19()
+	exercicio20()
 }
 
 func exercicio1() {
@@ -874,4 +875,24 @@ func exercicio19() {
 	target = 9
 	guesses = []int{1, 2, 3}
 	fmt.Println(jogoAdivinhacao(target, guesses, 3))
+}
+
+// =============================================================================
+// RESPOSTA DO EXERCÍCIO 20: Múltiplos de 3 e 5 até 50
+// =============================================================================
+
+// exercicio20 agrupa a solução do Exercício 20 (Múltiplos de 3 e 5 até 50)
+func exercicio20() {
+	fmt.Println("--- EXERCÍCIO 20: Múltiplos de 3 e 5 até 50 ---")
+
+	// use um for loop para iterar de 1 até 50 e verificar se cada número atende aos critérios
+	for i := 1; i <= 50; i++ { // inicializo i com 1, continuo enquanto i <= 50, e incremento i de 1 em 1
+		// verifico se o número é múltiplo de 3 OU múltiplo de 5, mas NÃO de ambos
+		// um número é múltiplo se o resto da divisão é igual a 0, ou seja, i%3 == 0 significa divisível por 3
+		if (i%3 == 0 || i%5 == 0) && !(i%3 == 0 && i%5 == 0) { // verifica se é (múltiplo de 3 OU múltiplo de 5) E NÃO (múltiplo de 3 E múltiplo de 5)
+			fmt.Print(i, " ") // se atender aos critérios, imprimo o número seguido de um espaço
+		}
+	}
+	fmt.Println() // imprimo uma quebra de linha para melhor legibilidade
+	fmt.Println()
 }
